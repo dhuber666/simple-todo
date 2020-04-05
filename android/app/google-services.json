@@ -1,0 +1,69 @@
+{
+  "project_info": {
+    "project_number": "1027727004830",
+    "firebase_url": "https://simpletodo-48f3c.firebaseio.com",
+    "project_id": "simpletodo-48f3c",
+    "storage_bucket": "simpletodo-48f3c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1027727004830:android:2e89a897376271ae8d178f",
+        "android_client_info": {
+          "package_name": "at.simpletodo"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1027727004830-rl1u5l1p4h01gpttmpg6gafprgqs9o46.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAb5d8iHQp2i_oCeGgDhofDOEYDTWfr3Io"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1027727004830-rl1u5l1p4h01gpttmpg6gafprgqs9o46.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1027727004830:android:b279476d26064a9c8d178f",
+        "android_client_info": {
+          "package_name": "com.reactnativenavigationreduxstarter"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1027727004830-rl1u5l1p4h01gpttmpg6gafprgqs9o46.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAb5d8iHQp2i_oCeGgDhofDOEYDTWfr3Io"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1027727004830-rl1u5l1p4h01gpttmpg6gafprgqs9o46.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
