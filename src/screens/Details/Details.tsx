@@ -1,5 +1,5 @@
 import React, {useEffect} from 'react';
-import {View, Text, Button} from 'react-native';
+import {View, Text, TouchableOpacity, ScrollView} from 'react-native';
 import {RootStackParamsList} from 'src/AppNavigator/models/RootStackParamsList';
 import {StackNavigationProp} from '@react-navigation/stack';
 import {useSelector, useDispatch} from 'react-redux';
@@ -45,9 +45,19 @@ const DetailsScreen = ({navigation}: Props) => {
   };
 
   return (
-    <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
-      <Button title="Add Todo" onPress={addTodo} />
-      {todos && todos.map((todo) => <Text>{todo.title}</Text>)}
+    <View
+      style={{
+        flex: 1,
+        alignItems: 'center',
+        justifyContent: 'center',
+        backgroundColor: '#F9FCFF',
+      }}>
+      <ScrollView style={{width: '100%'}}>
+        {todos && todos.map((todo) => <Text>{todo.title}</Text>)}
+      </ScrollView>
+      <TouchableOpacity onPress={addTodo}>
+        <Text>Add Todo</Text>
+      </TouchableOpacity>
     </View>
   );
 };
