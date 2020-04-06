@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="80" height="80" viewBox="0 0 80 80">
+  <defs>
+    <linearGradient id="linear-gradient" x1="0.23" y1="0.126" x2="0.834" y2="0.93" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#f857c3"/>
+      <stop offset="1" stop-color="#e0139c"/>
+    </linearGradient>
+    <filter id="Ellipse_8" x="0" y="0" width="80" height="80" filterUnits="userSpaceOnUse">
+      <feOffset dy="7" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="4.5" result="blur"/>
+      <feFlood flood-color="#f456c3" flood-opacity="0.471"/>
+      <feComposite operator="in" in2="blur"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+  </defs>
+  <g id="Button" transform="translate(-139.5 -702.5)">
+    <g transform="matrix(1, 0, 0, 1, 139.5, 702.5)" filter="url(#Ellipse_8)">
+      <circle id="Ellipse_8-2" data-name="Ellipse 8" cx="26.5" cy="26.5" r="26.5" transform="translate(13.5 6.5)" fill="url(#linear-gradient)"/>
+    </g>
+    <g id="add" transform="translate(167.309 723.309)">
+      <g id="Gruppe_15" data-name="Gruppe 15" transform="translate(11.404)">
+        <g id="Gruppe_14" data-name="Gruppe 14">
+          <path id="Pfad_77" data-name="Pfad 77" d="M236.32,0a1,1,0,0,0-1,1V23.81a1,1,0,1,0,2,0V1A1,1,0,0,0,236.32,0Z" transform="translate(-235.318 0)" fill="#fff" stroke="#fff" stroke-width="3"/>
+        </g>
+      </g>
+      <g id="Gruppe_17" data-name="Gruppe 17" transform="translate(0 11.404)">
+        <g id="Gruppe_16" data-name="Gruppe 16">
+          <path id="Pfad_78" data-name="Pfad 78" d="M23.81,235.318H1a1,1,0,1,0,0,2H23.81a1,1,0,1,0,0-2Z" transform="translate(0 -235.318)" fill="#fff" stroke="#fff" stroke-width="3"/>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>

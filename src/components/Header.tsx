@@ -2,6 +2,8 @@ import React from 'react';
 import LinearGradient from 'react-native-linear-gradient';
 import {View, StyleSheet, Text} from 'react-native';
 import Logo from '../assets/icons/bell_icon.svg';
+import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
+import {faTimes} from '@fortawesome/free-solid-svg-icons';
 
 const Header = () => {
   return (
@@ -16,8 +18,10 @@ const Header = () => {
           <Text style={styles.reminderSubTitle}>Meeting with client</Text>
           <Text style={styles.reminderSubTitle}>13.00 PM</Text>
         </View>
-        <Logo width={52} height={66} style={styles.bellIcon} />
-        <Text style={styles.closeBtn}>X</Text>
+        <View style={{flexDirection: 'row'}}>
+          <Logo width={52} height={66} style={{marginRight: 15}} />
+          <FontAwesomeIcon icon={faTimes} color="white" size={20} />
+        </View>
       </View>
     </LinearGradient>
   );
@@ -49,9 +53,7 @@ const styles = StyleSheet.create({
     fontSize: 11,
     lineHeight: 20,
   },
-  bellIcon: {
-    right: 20,
-  },
+
   closeBtn: {
     color: 'white',
     position: 'absolute',

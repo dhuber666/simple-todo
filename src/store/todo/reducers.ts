@@ -1,9 +1,6 @@
 import {TodoActionTypes, ADD_TODO, REMOVE_TODO, Todo, SET_TODOS} from './types';
 
-const initialState: Todo[] = [
-  {id: '2', title: 'test', completed: true},
-  {id: '2', title: 'test', completed: true},
-];
+const initialState: Todo[] = [];
 
 export function todoReducer(
   state = initialState,

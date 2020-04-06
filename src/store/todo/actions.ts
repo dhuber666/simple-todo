@@ -13,7 +13,12 @@ export const onNewTodo = (setUnsubscribe: Function) => async (
   const todoCollection = firestore().collection('Todo');
 
   const unsubscribe = todoCollection.onSnapshot((snapshot) => {
-    const data = snapshot.docs.map((item) => item.data()) as Todo[];
+    const data = snapshot.docs.map((item) => {
+      const todo = item.data();
+      const id = item.id;
+      console.log(id);
+      return {id, ...todo};
+    }) as Todo[];
     dispatch(setTodos(data));
   });
 

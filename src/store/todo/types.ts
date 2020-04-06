@@ -1,7 +1,10 @@
 export interface Todo {
+  id?: string;
   title: string;
   completed: boolean;
-  id: string;
+  due?: Date;
+  alarmEnabled: boolean;
+  categorie?: 'work' | 'private';
 }
 
 export const ADD_TODO = 'ADD_TODO';
