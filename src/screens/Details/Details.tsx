@@ -55,7 +55,7 @@ const DetailsScreen = ({navigation}: Props) => {
       <ScrollView style={{width: '100%'}}>
         {todos && todos.map((todo) => <Text>{todo.title}</Text>)}
       </ScrollView>
-      <TouchableOpacity onPress={addTodo}>
+      <TouchableOpacity onPress={addTodo} style={{marginBottom: 120}}>
         <Text>Add Todo</Text>
       </TouchableOpacity>
     </View>
