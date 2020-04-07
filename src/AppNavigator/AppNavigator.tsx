@@ -25,9 +25,7 @@ export default () => {
       <Stack.Screen
         name="Home"
         component={Home}
-        options={{
-          header: () => <Header />,
-        }}
+        options={{header: () => <Header />}}
       />
     </Stack.Navigator>
   );

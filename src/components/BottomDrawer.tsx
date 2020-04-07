@@ -1,154 +1,59 @@
-import React, {RefObject} from 'react';
-import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
-import BottomSheet from 'reanimated-bottom-sheet';
+import React, {useRef} from 'react';
+import {View, Button, TextInput, KeyboardAvoidingView} from 'react-native';
+import RBSheet from 'react-native-raw-bottom-sheet';
+import AddLogo from '../assets/icons/add_icon.svg';
 
-const BottomDrawer = () => {
-  const renderInner = () => (
-    <View style={styles.panel}>
-      <TouchableOpacity style={styles.panelButton}>
-        <Text style={styles.panelButtonTitle}>Sample</Text>
-      </TouchableOpacity>
-      <TouchableOpacity style={styles.panelButton}>
-        <Text style={styles.panelButtonTitle}>Buttons</Text>
-      </TouchableOpacity>
-      <TouchableOpacity style={styles.panelButton}>
-        <Text style={styles.panelButtonTitle}>Which</Text>
-      </TouchableOpacity>
-      <TouchableOpacity style={styles.panelButton}>
-        <Text style={styles.panelButtonTitle}>Could</Text>
-      </TouchableOpacity>
-      <TouchableOpacity style={styles.panelButton}>
-        <Text style={styles.panelButtonTitle}>Be</Text>
-      </TouchableOpacity>
-      <TouchableOpacity style={styles.panelButton}>
-        <Text style={styles.panelButtonTitle}>Clicked</Text>
-      </TouchableOpacity>
+const MySheet = () => (
+  <View style={{height: 500}}>
+    <View style={{height: 100, backgroundColor: 'transparent', zIndex: 101}}>
+      <AddLogo style={{alignSelf: 'center', zIndex: 100, top: 20}} />
     </View>
-  );
+    <View
+      style={{
+        height: 400,
+        backgroundColor: 'slateblue',
+        borderTopRightRadius: 10,
+        borderTopLeftRadius: 10,
+      }}>
+      <TextInput placeholder="your todo.." autoFocus />
+    </View>
+  </View>
+);
 
-  const bs: React.RefObject<BottomSheet> = React.createRef();
-
+export default function Example() {
+  const refRBSheet = useRef();
   return (
-    <View style={styles.container}>
-      <BottomSheet
-        ref={bs}
-        snapPoints={[500, 200, 100, 0]}
-        renderContent={renderInner}
-        initialSnap={0}
+    <View
+      style={{
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+        backgroundColor: 'transparent',
+      }}>
+      <Button
+        title="OPEN BOTTOM SHEET"
+        onPress={() => refRBSheet.current.open()}
       />
-      <View
-        style={{
-          alignItems: 'center',
-          flexDirection: 'row',
-          justifyContent: 'space-between',
+
+      <RBSheet
+        ref={refRBSheet}
+        closeOnPressMask={true}
+        customStyles={{
+          wrapper: {
+            backgroundColor: 'transparent',
+          },
+          draggableIcon: {
+            backgroundColor: 'transparent',
+            backfaceVisibility: 'hidden',
+          },
+          container: {
+            borderTopLeftRadius: 10,
+            borderTopRightRadius: 10,
+            backgroundColor: 'transparent',
+          },
         }}>
-        <TouchableOpacity
-          style={styles.commandButton}
-          onPress={() => bs.current?.snapTo(0)}>
-          <Text style={styles.panelButtonTitle}>1</Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          style={styles.commandButton}
-          onPress={() => bs.current?.snapTo(1)}>
-          <Text style={styles.panelButtonTitle}>2</Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          style={styles.commandButton}
-          onPress={() => bs.current!.snapTo(2)}>
-          <Text style={styles.panelButtonTitle}>3</Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          style={styles.commandButton}
-          onPress={() => bs.current!.snapTo(3)}>
-          <Text style={styles.panelButtonTitle}>4</Text>
-        </TouchableOpacity>
-      </View>
+        <MySheet />
+      </RBSheet>
     </View>
   );
-};
-
-const IMAGE_SIZE = 200;
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#6f6f76',
-  },
-  box: {
-    width: IMAGE_SIZE,
-    height: IMAGE_SIZE,
-  },
-  panelContainer: {
-    position: 'absolute',
-    top: 0,
-    bottom: 0,
-    left: 0,
-    right: 0,
-  },
-  commandButton: {
-    padding: 20,
-    borderRadius: 10,
-    backgroundColor: '#292929',
-    alignItems: 'center',
-    margin: 7,
-  },
-  panel: {
-    height: 600,
-    padding: 20,
-    backgroundColor: '#2c2c2fAA',
-    paddingTop: 20,
-    borderTopLeftRadius: 20,
-    borderTopRightRadius: 20,
-    shadowColor: '#000000',
-    shadowOffset: {width: 0, height: 0},
-    shadowRadius: 5,
-    shadowOpacity: 0.4,
-  },
-  header: {
-    width: '100%',
-    height: 50,
-  },
-  panelHeader: {
-    alignItems: 'center',
-  },
-  panelHandle: {
-    width: 40,
-    height: 8,
-    borderRadius: 4,
-    backgroundColor: '#00000040',
-    marginBottom: 10,
-  },
-  panelTitle: {
-    fontSize: 27,
-    height: 35,
-  },
-  panelSubtitle: {
-    fontSize: 14,
-    color: 'gray',
-    height: 30,
-    marginBottom: 10,
-  },
-  panelButton: {
-    padding: 13,
-    borderRadius: 10,
-    backgroundColor: '#292929',
-    alignItems: 'center',
-    marginVertical: 7,
-  },
-  panelButtonTitle: {
-    fontSize: 17,
-    fontWeight: 'bold',
-    color: 'white',
-  },
-  photo: {
-    width: '100%',
-    height: 225,
-    marginTop: 30,
-  },
-  map: {
-    height: '100%',
-    width: '100%',
-  },
-});
-
-export default BottomDrawer;
+}
