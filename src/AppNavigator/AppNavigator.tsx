@@ -7,15 +7,18 @@ import HomeScreen from '../screens/Home/Home';
 
 import Header from '../components/Header';
 
-import Modal from '../components/BottomDrawer';
+import BottomDrawer from '../components/BottomDrawer';
+
+import BottomTabBar from '../components/BottomTabBar';
 
 const Stack = createStackNavigator<RootStackParamsList>();
 const Tab = createBottomTabNavigator();
 
 const Home = () => (
-  <Tab.Navigator>
+  <Tab.Navigator tabBar={(props) => <BottomTabBar {...props} />}>
     <Tab.Screen name="Home" component={HomeScreen} />
-    <Tab.Screen name="Test" component={Modal} />
+    <Tab.Screen name="Add" component={BottomDrawer} />
+    <Tab.Screen name="Tasks" component={Header} />
   </Tab.Navigator>
 );
 

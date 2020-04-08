@@ -50,7 +50,7 @@ const DetailsScreen = ({navigation}: Props) => {
         flex: 1,
         alignItems: 'center',
         justifyContent: 'center',
-        backgroundColor: '#F9FCFF',
+        backgroundColor: 'orange',
       }}>
       <ScrollView style={{width: '100%'}}>
         {todos && todos.map((todo) => <Text>{todo.title}</Text>)}

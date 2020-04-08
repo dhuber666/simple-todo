@@ -55,9 +55,6 @@ const HomeScreen = ({navigation}: Props) => {
       <ScrollView style={styles.todoScrollView}>
         {todos && todos.map((todo) => <Text key={todo.id}>{todo.title}</Text>)}
       </ScrollView>
-      <TouchableOpacity onPress={addTodo}>
-        <AddLogo style={styles.addLogo} />
-      </TouchableOpacity>
     </View>
   );
 };
@@ -67,7 +64,7 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: '#F9FCFF',
+    backgroundColor: 'orange',
   },
   todoScrollView: {
     width: '100%',

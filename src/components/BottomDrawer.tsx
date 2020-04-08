@@ -4,24 +4,28 @@ import RBSheet from 'react-native-raw-bottom-sheet';
 import AddLogo from '../assets/icons/add_icon.svg';
 
 const MySheet = () => (
-  <View style={{height: 500}}>
-    <View style={{height: 100, backgroundColor: 'transparent', zIndex: 101}}>
-      <AddLogo style={{alignSelf: 'center', zIndex: 100, top: 20}} />
-    </View>
-    <View
+  <View
+    style={{
+      height: 700,
+      position: 'relative',
+      width: '100%',
+      backgroundColor: 'orange',
+      borderTopLeftRadius: 15,
+      borderTopRightRadius: 15,
+    }}>
+    <AddLogo
       style={{
-        height: 400,
-        backgroundColor: 'slateblue',
-        borderTopRightRadius: 10,
-        borderTopLeftRadius: 10,
-      }}>
-      <TextInput placeholder="your todo.." autoFocus />
-    </View>
+        position: 'absolute',
+        alignSelf: 'center',
+        top: -40,
+      }}
+    />
+    <TextInput placeholder="Your Todo.." />
   </View>
 );
 
 export default function Example() {
-  const refRBSheet = useRef();
+  const refRBSheet = useRef() as React.MutableRefObject<RBSheet>;
   return (
     <View
       style={{
@@ -37,14 +41,13 @@ export default function Example() {
 
       <RBSheet
         ref={refRBSheet}
-        closeOnPressMask={true}
+        closeOnDragDown={true}
         customStyles={{
           wrapper: {
             backgroundColor: 'transparent',
           },
           draggableIcon: {
             backgroundColor: 'transparent',
-            backfaceVisibility: 'hidden',
           },
           container: {
             borderTopLeftRadius: 10,
