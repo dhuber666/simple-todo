@@ -24,7 +24,7 @@ const Home = () => (
 
 export default () => {
   return (
-    <Stack.Navigator initialRouteName="Home">
+    <Stack.Navigator initialRouteName="Home" mode="modal">
       <Stack.Screen
         name="Home"
         component={Home}

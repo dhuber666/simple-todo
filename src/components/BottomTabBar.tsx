@@ -1,7 +1,9 @@
-import {View, Text, TouchableOpacity} from 'react-native';
-import React from 'react';
+import {View, Text, TouchableOpacity, TextInput} from 'react-native';
+import React, {useRef} from 'react';
 import {BottomTabBarProps} from '@react-navigation/bottom-tabs';
 import Icon from '../assets/icons/add_icon.svg';
+import RBSheet from 'react-native-raw-bottom-sheet';
+import ActionSheet from 'react-native-actions-sheet';
 
 function BottomTabBar({state, descriptors, navigation}: BottomTabBarProps) {
   const renderTabs = () => {
@@ -35,38 +37,79 @@ function BottomTabBar({state, descriptors, navigation}: BottomTabBarProps) {
         });
       };
 
+      const onAddPress = (ref: React.MutableRefObject<RBSheet>) => {
+        const event = navigation.emit({
+          type: 'tabPress',
+          target: route.key,
+          canPreventDefault: true,
+        });
+
+        event.preventDefault();
+        ref.current.open();
+      };
+
       if (route.name === 'Add') {
+        const refRBSheet = useRef() as React.MutableRefObject<RBSheet>;
+        let actionSheet: any;
         return (
           <TouchableOpacity
-            style={{
-              height: 50,
-              backgroundColor: 'white',
-              flex: 1,
-            }}
-            hitSlop={{top: 50, left: -20, right: -20}}
-            accessibilityRole="button"
+            style={{backgroundColor: 'transparent'}}
+            hitSlop={{top: 50}}
             activeOpacity={1}
-            accessibilityStates={isFocused ? ['selected'] : []}
-            accessibilityLabel={options.tabBarAccessibilityLabel}
-            testID={options.tabBarTestID}
-            onPress={onPress}
-            onLongPress={onLongPress}>
+            onPress={() => {
+              actionSheet.setModalVisible();
+            }}>
             <View
               style={{
-                width: 80,
-                height: 80,
-                elevation: 4,
-                borderRadius: 40,
-                bottom: 50,
-                alignSelf: 'center',
+                justifyContent: 'center',
+                flex: 1,
+                backgroundColor: 'white',
               }}>
-              <Icon
-                height={80}
-                width={80}
+              <View
                 style={{
+                  width: 80,
+                  height: 80,
+                  elevation: 4,
+                  borderRadius: 40,
+                  top: -30,
                   alignSelf: 'center',
-                }}
-              />
+                }}>
+                <Icon width={80} height={80} style={{alignSelf: 'center'}} />
+              </View>
+              <ActionSheet
+                bounceOnOpen
+                bounciness={15}
+                defaultOverlayOpacity={0}
+                ref={(ref) => (actionSheet = ref)}
+                gestureEnabled={true}
+                openAnimationSpeed={100}
+                CustomHeaderComponent={
+                  <View
+                    style={{
+                      backgroundColor: 'transparent',
+                      borderRadius: 15,
+                    }}>
+                    <View
+                      style={{
+                        width: 80,
+                        height: 80,
+                        elevation: 4,
+                        borderRadius: 40,
+                        top: -50,
+                        alignSelf: 'center',
+                      }}>
+                      <Icon
+                        width={80}
+                        height={80}
+                        style={{alignSelf: 'center'}}
+                      />
+                    </View>
+                  </View>
+                }>
+                <View style={{height: 300, backgroundColor: 'transparent'}}>
+                  <Text>YOUR CUSTOM COMPONENT INSIDE THE ACTIONSHEET</Text>
+                </View>
+              </ActionSheet>
             </View>
           </TouchableOpacity>
         );
@@ -96,5 +139,26 @@ function BottomTabBar({state, descriptors, navigation}: BottomTabBarProps) {
 
   return <View style={{flexDirection: 'row'}}>{renderTabs()}</View>;
 }
+
+const MySheet = () => (
+  <View
+    style={{
+      height: 700,
+      position: 'relative',
+      width: '100%',
+      backgroundColor: 'orange',
+      borderTopLeftRadius: 15,
+      borderTopRightRadius: 15,
+    }}>
+    <Icon
+      style={{
+        position: 'absolute',
+        alignSelf: 'center',
+        top: -40,
+      }}
+    />
+    <TextInput placeholder="Your Todo.." />
+  </View>
+);
 
 export default BottomTabBar;
